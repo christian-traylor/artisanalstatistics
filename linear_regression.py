@@ -20,8 +20,8 @@ if plot_data:
 
 # Problem statement:
 # Determine if mouse weight is a predictor of mouse height.
-# -- Find the analytical solution via minimizing Y = B_0 + B_1 * X.
-# -- The parameters B_0 and B_1 can be found with the following equations:
+# -- Find the analytical solution via minimizing the residual sum of squares.
+# -- The parameters B_0 and B_1 can be found with the following equations, found by
 # -- B_1 = sum((X_i - X_bar) * (Y_i - Y_bar))
 # --       ________________________________
 # --              sum((X_i - X_bar)^2)

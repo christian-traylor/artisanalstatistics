@@ -38,12 +38,12 @@ B_0 = (Y_bar) - (B_1 * X_bar)
 # Plot the data
 plot_data = True
 if plot_data:
-    x, y = zip(*data)
+    X, Y = zip(*data)
     fitted_line_points = []
-    for x_i in x:
-        fitted_line_points.append((B_1 * x_i) + B_0)
-    plt.scatter(x,y, marker='o', color='b')
-    plt.plot(x,fitted_line_points, color='red')
+    for X_i in X:
+        fitted_line_points.append((B_1 * X_i) + B_0)
+    plt.scatter(X,Y, marker='o', color='b')
+    plt.plot(X,fitted_line_points, color='red')
     plt.xlabel("Mouse Weight")
     plt.ylabel("Mouse Height")
     plt.title(" ")

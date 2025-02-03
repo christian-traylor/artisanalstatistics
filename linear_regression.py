@@ -3,12 +3,12 @@ from data_loader import csv_loader
 import matplotlib.pyplot as plt
 
 # Import the data
-loaded_data = csv_loader('Mouse_Weight_and_Height_Dataset.csv') 
+loaded_data = csv_loader('women_height_and_weights.csv') 
 headers = loaded_data[0]
 data = [(float(x), float(y)) for x, y in loaded_data[1]]
 
 # Problem statement:
-# Determine if mouse weight is a predictor of mouse height.
+# Determine if a women's height is a predictor of their weight.
 # -- Find the parameters for the line of best fit with equation y = B_0 + (B_1 * x)
 # -- Find the analytical solution via minimizing the residual sum of squares.
 # -- The parameters B_0 and B_1 can be found with the following equations:
@@ -44,7 +44,7 @@ if plot_data:
         fitted_line_points.append((B_1 * X_i) + B_0)
     plt.scatter(X,Y, marker='o', color='b')
     plt.plot(X,fitted_line_points, color='red')
-    plt.xlabel("Mouse Weight")
-    plt.ylabel("Mouse Height")
+    plt.xlabel("Height")
+    plt.ylabel("Weight")
     plt.title(" ")
     plt.show()

@@ -8,12 +8,11 @@ headers = loaded_data[0]
 data = [(float(x), float(y)) for x, y in loaded_data[1]]
 
 
-# Problem statement:
-# Determine if a women's height is a predictor of their weight.
+# Fit a line with the equation y = B_0 + (B_1 * x) to the data.
 # -- Find the parameters for the line of best fit with equation y = B_0 + (B_1 * x)
 # -- Find the analytical solution via minimizing the residual sum of squares (RSS).
 # -- The parameters B_0 and B_1 can be found with the following equations:
-# -- B_1 = sum((X_i - X_bar) * (Y_i - Y_bar))
+# -- B_1 = sum[(X_i - X_bar) * (Y_i - Y_bar)]
 # --       ________________________________
 # --              sum((X_i - X_bar)^2)
 # -- 
@@ -47,6 +46,7 @@ for X_i, Y_i in data:
     mean_line_loss += (Y_i - ((mean_line_slope * X_i) + mean_line_y_intercept))**2
     fitted_line_loss += (Y_i - ((B_1 * X_i) + B_0))**2
 R_squared = (mean_line_loss - fitted_line_loss) / mean_line_loss
+
 
 # Plot the data
 plot_data = True

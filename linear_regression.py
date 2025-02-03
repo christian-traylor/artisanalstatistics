@@ -11,7 +11,7 @@ data = [(float(x), float(y)) for x, y in loaded_data[1]]
 # Determine if mouse weight is a predictor of mouse height.
 # -- Find the parameters for the line of best fit with equation y = B_0 + (B_1 * x)
 # -- Find the analytical solution via minimizing the residual sum of squares.
-# -- The parameters B_0 and B_1 can be found with the following equations, found by
+# -- The parameters B_0 and B_1 can be found with the following equations:
 # -- B_1 = sum((X_i - X_bar) * (Y_i - Y_bar))
 # --       ________________________________
 # --              sum((X_i - X_bar)^2)

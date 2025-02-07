@@ -1,6 +1,6 @@
 import csv
 
-def csv_loader(filename):
+def csv_loader(filename, pandas=False):
     with open(filename, 'r') as file:
         csv_reader = csv.reader(file)
         header = next(csv_reader, None)

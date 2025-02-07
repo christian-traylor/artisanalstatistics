@@ -3,7 +3,7 @@ from data_loader import csv_loader
 import matplotlib.pyplot as plt
 
 # Import the data
-loaded_data = csv_loader('women_height_and_weights.csv') 
+loaded_data = csv_loader('data/women_height_and_weights.csv') 
 headers = loaded_data[0]
 data = [(float(x), float(y)) for x, y in loaded_data[1]]
 

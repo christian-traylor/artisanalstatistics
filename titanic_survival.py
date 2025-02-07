@@ -48,7 +48,7 @@ def extract(train_path="data/titanic_train.csv", test_path="data/titanic_test.cs
     return train_df, test_df
 
 def build(df: pd.DataFrame):
-    continuous_cols = ["Age", "SibSp", "Parch", "Pclass_numeric", "Sex_numeric", "Has_Family_numeric", "Embarked_numeric", "Has_Cabin_numeric", "Is_Elder_numeric"]
+    continuous_cols = ["Age", "SibSp", "Parch", "Pclass_numeric", "Fare", "Sex_numeric", "Has_Family_numeric", "Embarked_numeric", "Has_Cabin_numeric", "Is_Elder_numeric"]
     discrete_cols = ["Pclass_numeric", "Sex_numeric", "Has_Family_numeric", "Embarked_numeric", "Has_Cabin_numeric", "Is_Elder_numeric"]
     
     continuous_data = df[continuous_cols].to_numpy()
@@ -96,7 +96,7 @@ def main():
         "Survived": predictions
     })
 
-    output.to_csv("output5.csv", index=False)
+    output.to_csv("output.csv", index=False)
 
 if __name__ == "__main__":
     # notes to self:

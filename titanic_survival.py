@@ -1,10 +1,13 @@
 import numpy as np
 import pandas as pd
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import skew
 
 def fill_missing_and_encode(df: pd.DataFrame):
-    df["Age"] = df["Age"].fillna(df["Age"].mean()).ffill()
-    df["Fare"] = df["Fare"].fillna(df["Fare"].mean()).ffill()
+    df["Age"] = df["Age"].fillna(df["Age"].median()).ffill()  # Age is positively skewed, populating na with the mean value will inflate it
+    df["Fare"] = df["Fare"].fillna(df["Fare"].median()).ffill()  # Same reasoning as above
     
     df["Pclass"] = df["Pclass"].astype("category")
     df["Pclass_numeric"] = df["Pclass"].cat.codes
@@ -20,6 +23,7 @@ def load_and_prepare_data(train_path="data/titanic_train.csv", test_path="data/t
     
     train_df = fill_missing_and_encode(train_df)
     test_df = fill_missing_and_encode(test_df)
+
     
     return train_df, test_df
 
@@ -50,8 +54,20 @@ def train_and_predict(train_df: pd.DataFrame, test_df: pd.DataFrame):
     
     return y_pred
 
+def visualize(dataset, enabled):
+    if enabled:
+        plt.figure(figsize=(8, 5))
+        sns.histplot(dataset["Fare"], bins=30, kde=True)
+        skewness = skew(dataset["Fare"])
+        distribution_skewness = "negative" if skewness < 0 else ("uniform" if skewness == 0 else "positive")
+        plt.title(f"Distribution skewness: {distribution_skewness}, {skewness:.2f}")
+        plt.xlabel("Age")
+        plt.ylabel("Frequency")
+        plt.show()
+
 def main():
     train_df, test_df = load_and_prepare_data()
+    visualize(train_df, enabled=False)
     predictions = train_and_predict(train_df, test_df)
 
     passenger_ids = [pid for pid in range(892, 1310)]

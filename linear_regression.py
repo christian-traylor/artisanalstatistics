@@ -49,8 +49,7 @@ R_squared = (mean_line_loss - fitted_line_loss) / mean_line_loss
 
 
 # Plot the data
-plot_data = True
-if plot_data:
+if plot_data := True:
     X, Y = zip(*data)
     fitted_line_points = []
     for X_i in X:
